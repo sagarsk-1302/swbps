@@ -1,0 +1,83 @@
+{% extends 'home_base.html'%}
+{% block body %}
+<section>
+  <img class="center" src="/static/123.jpg" width="1000" height="400" style=" width: 100%" >
+  <img class="center" src="/static/image1.jpg" width="1000" height="400" style="width: 100%">
+  <img class="center" src="/static/image2.jpg" width="1000" height="400" style="width: 100%" >
+</section>
+
+  <!-- Website Description -->
+<section>
+  <h2 style="text-align:center"> Clientegy - Software Project Bidding System</h2>
+  <p class="div" style="text-align:center"><i>Find the best Freelancers and get your work done in no time!</i></p>
+  <p style="text-align:center"> Welcome to Clientegy! We provide a platform for you to post your projects and hire freelancers for your desired price! Join us as Freelancers to start working here!</p>
+</section>
+
+<!-- <section class="rowpadding center light-grey">
+  <article class="w3-third">
+    <p>John</p> -->
+    <!-- <img src="123.jpg" alt="Random Name" style="width: fit-content"> -->
+    <!-- <p>Domain : Mobile Application Development <br> Cost : 800-1000$</p>
+  </article>
+  <article class="w3-third">
+    <p>Paul</p> -->
+    <!-- <img src="image1.jpg" alt="Random Name" style="width: fit-content"> -->
+    <!-- <p>Domain : Web Application Development <br> Cost : 400-900$</p>
+  </article>
+  <article class="w3-third">
+    <p>Ringo</p> -->
+    <!-- <img src="image2.jpg" alt="Random Name" style="width: fit-content"> -->
+    <!-- <p>Domain : Desktop App Development <br> Cost 700-1500$</p>
+  </article>
+</section> -->
+
+<div class="rowpadding padding-32" style="margin:0 -16px">
+  <div class="w3-third margin-bottom first-div">
+    <img src="/static/freelancer.jpg" alt="John" style="width:100%" class="w3-hover-opacity">
+    <div class="w3-container w3-white ">
+      <p><b>John</b></p>
+      <p class="w3-opacity">5 star Freelancer</p>
+      <p>Domain : Mobile Application Development <br> Cost : 800-1000$</p>
+    </div>
+  </div>
+  <div class="w3-third margin-bottom second-div">
+    <img src="/static/freelancer.jpg" alt="Sagar" style="width:100%" class="w3-hover-opacity">
+    <div class="w3-container w3-white">
+      <p><b>Sagar</b></p>
+      <p class="w3-opacity">7 star Freelancer</p>
+      <p>Domain : Web Application Development <br> Cost : 700-1500$</p>
+    </div>
+  </div>
+  <div class="w3-third margin-bottom third-div">
+    <img src="/static/freelancer.jpg" alt="Sahana" style="width:100%" class="w3-hover-opacity">
+    <div class="w3-container w3-white">
+      <p><b>Sahana</b></p>
+      <p class="w3-opacity">5 star Freelancer</p>
+      <p>Domain : Desktop Application Development <br> Cost : 500-1200$</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<script>
+  // Automatic Slideshow - change image every 3 seconds
+  var myIndex = 0;
+  carousel();
+  
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("center");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 3000);
+  }
+  </script>
+{% endblock %}

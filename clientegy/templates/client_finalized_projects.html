@@ -1,0 +1,39 @@
+{% extends 'base_client.html'%}
+{% block body%}
+{%load my_template_methods%}
+{% for post in posts %}
+    <div class='container card border-dark mb-3' style="margin-top: 5px;">
+        <div class='row '>
+            <div class="col-lg-8">
+                <div class="alert alert-dismissible alert-warning" style="margin-top: 5px;">
+                <br><p><b>Project Name</b> : <a href="/viewproject_client/{{post.project_id.project_id}}/">{{post.project_id.title}}</a></p>
+                <p><b>Domain</b> : {{post.project_id.domain}}</p>
+                <b>Cost</b> : {{post.bid_price}} ₹</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <br><a href="/view_dev_profile/{{post.dev_id.dev_id}}/" class='btn btn-outline-dark btn-sm' >View Developer profile</a></p>
+                <br><p><a href="/view_bill/{{post.id}}/" class='btn btn-outline-dark btn-sm' >View Bill</a></p>
+            </div>
+        </div>
+        {%if post.project_finished%}
+        <p class='alert alert-dismissible alert-secondary'>The Project has been completed.</p>
+            {%if post.review|length <= 0 %}
+        <form action="/review/{{post.id}}/" method="POST">
+            {%csrf_token%}
+            <textarea name="review" cols="30" rows="1" class='form-control'>{{post.review}}</textarea>
+            <br><button type="submit" id='submit' class="btn btn-outline-success btn-sm">Click here to give review</button>
+        </form>
+            {%else%}
+            <p class="alert alert-dismissible alert-success"><b>Review : </b>{{post.review}}</p>
+            {%endif%}
+            {%if post.feedback|length > 0 %}
+            <p class="alert alert-dismissible alert-info"><b>Feedback : </b>{{post.feedback}}</p>
+            {%endif%}
+       {%else%}
+       <a href="/mark_as_completed/{{post.id}}/" class='btn btn-dark btn-sm' >Mark as completed</a>
+       {%endif%}
+    </div>
+{% endfor%}
+{% endblock%}
+

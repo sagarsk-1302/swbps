@@ -1,0 +1,44 @@
+{% extends 'base_freelancer.html'%}
+{% block body%}
+<div class="container">
+    <div class="container card border-primary" style="margin-top: 10px;">
+    <br><p><b>Project Name:</b> {{project.title}}</p>
+    <p><b>Domain</b> : {{project.domain}}</p>
+    <p><b>Cost</b> : {{project.offered_price}} ₹</p>
+    <p><b>Description:</b></p>
+    {{project.description}}<br>
+    <br>
+    <p><b>Experience</b> : {{project.lvl_exp}}</p>
+    <p><b>Name of the company</b> : {{client.user.username}}</p>
+    <br>
+    </div>
+    {%if project.proj_selected_flag%}
+<h3>Developer has been aleady selected.</h3><hr>
+{%endif%}
+<div class="container">
+{%for bidder in bidders%}
+<div class="container card border-primary" style="border-radius: 20px;border:1px solid; margin: 5px 0px 5px 10px; padding-top:5px;">
+    <p><b>Name : </b><a href="/viewdev_profile/{{bidder.dev_id.dev_id}}/">{{bidder.dev_name}}</a></p>
+    <p><b>Bid price : </b>{{bidder.bid_price}} ₹</p></div>
+{% endfor %}
+<hr>
+</div>
+{%if already_bidded %}
+<h4>You have already bid for this project.</h4>
+{%else%}
+<form action="/view_project_dev/{{projectid}}/" method="post" >
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-lg-4">
+            <input type="number" name="price" class="form-control card border-primary" placeholder=" Enter Bid Price">
+        </div>
+        <div class="col-lg-4">
+            <button type="submit" class='btn btn-danger'>Bid for this price</button>
+        </div>
+    </div>
+    
+    
+</form>
+</div>
+{%endif%}
+{% endblock%}

@@ -1,0 +1,28 @@
+{% extends 'base_freelancer.html' %}
+{% block body %}
+
+<div class="container" >
+{% if not projects_exists %}
+<h4>Projects under your selected domain has not been posted yet.</h4>
+{%else%}
+<br><h3><i><b>Projects of your domain up for bidding!</i></b></h3>
+{%for project in projects %}
+
+    <div class="container card border-primary" style="margin-top: 10px; padding-top:10px;">
+      <div>
+        <p><b>Project Name</b> : <a href="/view_project_dev/{{project.project_id}}/">{{project.title}}</a></p>
+        <p><b>Domain</b> : {{project.domain}}</p>
+        <p><b>Experience</b> : {{project.lvl_exp}}</p>
+        <p><b>Project Description </b>: {{project.description}} </p>
+        <b>Cost</b> : {{project.offered_price}} ₹</p>
+        {% if project.proj_selected_flag%}
+        <p style="border: 2px solid red; width:fit-content">This developer is already hired.</p>
+        {%endif%}
+        <p></p>
+      </div>
+    </div>
+  
+  {% endfor %}
+  {%endif%}
+</div>
+  {% endblock %}

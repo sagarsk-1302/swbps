@@ -1,0 +1,18 @@
+{%extends 'base_client.html'%}
+{%block body%}
+<div class="container">
+    <div class="alert alert-dismissible alert-info">
+    <br>
+    <br>
+    <p><b>Name: </b>{{user.user.username}}</p>
+    <p><b>Age: </b>{{user.age}}</p>
+    <p><b>Email: </b>{{user.user.email}}</p>
+    <p><b>Phone No: </b>{{user.phone_no}}</p>
+    <p><b>Experience: </b>{{user.exp}}</p>
+    <p><b>Charging Service offered: </b>{{user.charging_basis}}</p>
+    <p><b>Preferred Domain: </b>{{user.domain}}</p>
+    <br><br>
+    </div>
+</div>
+
+{%endblock%}

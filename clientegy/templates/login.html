@@ -1,0 +1,19 @@
+{% extends 'home_base.html' %}
+{% block body %}
+<div class="container">
+    {%if credentials_failed %}
+    <h3>Your credentials are incorrect.</h3>
+    <h4>If you aren't able to login. Contact admin</h4>
+    <a href="{% url 'login' %}">To retry click here.</a>
+    {%else%}
+    <form action="/login/" method="post">
+        {% csrf_token %}
+        <br><p>Email ID </p>
+        <input type="email" name="email" class='form-control'><br>
+        <p>Password</p>
+        <input type="password" name="password" class='form-control'><br><br>
+        <input type="submit" value="Login" class='btn btn-danger' >
+    </form>
+    {%endif%}
+</div>
+{% endblock %}

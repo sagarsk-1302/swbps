@@ -1,0 +1,64 @@
+{% extends 'base_freelancer.html' %}
+{% block body %}
+<div class="container">
+    {%if username_exists %}
+    <h5>The user with the same username already exists.</h5>
+    <h6>Please enter a different user name.</h6>
+    {%endif%}
+    <form action="/edit_profile_dev/" method="post"><br>
+        {% csrf_token %}
+        <p ><b>Name :</b></p>
+        <input type="text" name="name" class="form-control" value={{user.user.username}}><hr>
+        <p><b>Age :</b></p>
+        <input type="text" name="age" class="form-control" value={{user.age}}><hr>
+        <p><b>Phone No :</b></p>
+        <input type="tel" name="phoneNo" class="form-control" pattern="[0-9]{10}" value={{user.phone_no}}><hr>
+        <p><b>Experience Level :</b></p>
+        <div class="btn-group btn-group-toggle breadcrumb" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="experience"   value= "Beginner" id= "Beginner"> Beginner
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="experience"  value= "Intermediate" id= "Intermediate"> Intermediate
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="experience" value= "Expert" id= "Expert"> Expert
+            </label>
+          </div>
+        <hr>
+        <p><b>Preferred Domain :</b></p>
+        <div class="btn-group btn-group-toggle breadcrumb" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="domain"   value= "Mobile Application" id="Mobile Application"> Mobile Application
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="domain"  value= "Web Application" id="Web Application"> Web Application
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="domain"   value= "Desktop Application" id="Desktop Application" > Desktop Application
+            </label>
+          </div>
+        <hr>
+       <br>
+       <p><b>Charging Basis :</b></p>
+        <div class="btn-group btn-group-toggle breadcrumb" data-toggle="buttons">
+            <label class="btn btn-primary">
+              <input type="radio" name="cost" value= "Hourly" id= "Hourly"> Hourly
+            </label>
+            <label class="btn btn-primary">
+              <input type="radio" name="cost" value= "Fixed" id= "Fixed" > Fixed
+            </label>
+          </div>
+        <hr>
+       <br>
+        <button type="submit" class="btn btn-dark btn-block" style="width: 50%; margin:auto;">Update</button>
+        <br>
+        <br>
+    </form>
+</div>
+<script>
+    document.getElementById('{{user.domain}}').checked = true;
+    document.getElementById('{{user.charging_basis}}').checked = true;
+    document.getElementById('{{user.exp}}').checked = true;
+</script>
+{% endblock%}

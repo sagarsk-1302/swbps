@@ -1,0 +1,40 @@
+{% extends 'base_freelancer.html' %}
+{% block body %}
+<div class="container">
+<div class="row" >
+    <div class="col-sm-4" style="margin: auto;">
+        <br>
+        <h3>The Developer</h3><br>
+        <p>{{post.dev_id.user.username}}</p>
+        <p>{{post.dev_id.user.email}}</p>
+        <p>{{post.dev_id.phone_no}}</p>
+    </div>
+    <div class="col-sm-4" style="margin: auto;">
+        <br>
+        <h3>The Client</h3> <br>
+        <p>{{post.client_id.user.username}}</p>
+        <p>{{post.client_id.user.email}}</p>
+        <p>{{post.client_id.phone_no}}</p>
+    </div>
+  </div>
+</div>
+<hr>
+<hr>
+<div class="container111">
+    <p><h3>{{post.project_id.title}}</h3></p>
+   <p><h2>The Price to be paid is </h2><h1>{{post.bid_price}} ₹</h1></p>
+</div>
+<hr>
+<hr>
+<style>
+    h3,p{
+     text-align: center;
+    }
+    p{
+        font-size: medium;
+    }
+    .container111{
+        text-align: center;
+    }
+</style>
+{% endblock%}

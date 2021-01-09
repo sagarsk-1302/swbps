@@ -1,0 +1,35 @@
+{% extends 'base_freelancer.html'%}
+{% block body%}
+{%load my_template_methods%}
+{% for post in posts %}
+    <div class='container card border-primary' style="margin-top: 5px; margin-bottom:5px;">
+        <div class="row">
+            <div class="col-lg-8 ">
+        <br><p><b>Project Name</b> : <a href="/view_project_dev/{{post.project_id.project_id}}/">{{post.project_id.title}}</a></p>
+        <p><b>Domain</b> : {{post.project_id.domain}}</p>
+        <p><b>Cost</b> : {{post.bid_price}} ₹</p>
+            </div>
+            <div class="col-lg-4">
+                <br><p><a href="/view_client_profile/{{post.client_id.client_id}}/" class="btn btn-outline-dark btn-sm">View Client Profile</a></p>
+                <p><a href="/view_bill_dev/{{post.id}}/" class="btn btn-outline-dark btn-sm">View Bill</a></p>
+            </div>
+        </div>
+        {%if post.project_finished%}
+        {%if post.review|length > 0 %}
+        <p><b>Review : </b>{{post.review}}</p>
+        {%endif%}
+        {%if post.feedback|length == 0%}
+        <form action="/feedback/{{post.id}}/" method="post">
+            {%csrf_token%}
+        <textarea name="feedback" id="" cols="30" rows="1" class="form-control">Enter Feedback</textarea>
+        <br>
+        <button type="submit" class="btn btn-outline-success btn-sm">Give feedback</button>
+        </form>
+        {%else%}
+        <p><b>Feedback :</b> {{post.feedback}}</p>
+        {%endif%}
+        {%endif%}
+    </div>
+{% endfor%}
+{% endblock%}
+

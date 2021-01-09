@@ -1,0 +1,52 @@
+{% extends 'home_base.html' %}
+{% block body %}
+
+
+<div class="container">
+    {%if registered %}
+    <br><h3>Registered Successfully. You can login now </h3>
+    {%elif email_exists %}
+    <br><h3>The user with this mail id already exists.</h3>
+    <h4>Use different email id or login using the same email id</h4>
+    <a href="{url 'freelancer_registration'}">To retry click here.</a>
+    {%elif username_exists%}
+    <br><h3>The user with this username already exists.</h3>
+    <h4>Please use different username</h4>
+    <a href="{url 'freelancer_registration'}">To retry click here.</a>
+    {%else%}
+    <form action="/freelancer_registration/" method="post"><br>
+        {% csrf_token %}
+        <p>Name</p>
+        <input type="text" name="name" class="form-control"><hr>
+        <p>Age</p>
+        <input type="text" name="age" class="form-control"><hr>
+        <p>Email ID</p>
+        <input type="email" name="email" class="form-control"><hr>
+        <p>Password</p>
+        <input type="password" name="password" class="form-control"><hr>
+        <p>Phone No</p>
+        <input type="tel" name="phoneNo" class="form-control" pattern="[0-9]{10}"><hr>
+        <p>Experience</p>
+            <input type="radio" name="experience" value= "Beginner"> Beginner<br>
+            <input type="radio" name="experience" value= "Intermediate">  Intermediate<br>
+            <input type="radio" name="experience" value= "Expert"> Expert<br>
+        <hr>
+        <p>Service</p>
+        <div class='radiobox'>
+            <input type="radio" name="service" value="Mobile Application">      Mobile Application
+        </div>
+        <div>
+            <input type="radio" name="service" value="Web Application">      Web Application
+        </div>
+        <div>
+            <input type="radio" name="service" value="Desktop Application">      Desktop Application
+        </div>
+        <hr><br>
+        <p>Charging Basis : </p>
+        <input type="radio" name="cost" value="Hourly"> Hourly<br>
+            <input type="radio" name="cost" value="Fixed"> Fixed<hr><br>
+        <button type="submit" class="btn btn-success">Sign-up</button>
+    </form>
+    {%endif%}
+</div>
+{% endblock%}

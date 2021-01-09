@@ -1,0 +1,35 @@
+{% extends 'base_client.html'%}
+{% block body%}
+<div class="container ">
+    <br><p class="alert alert-dismissible alert-success"><b>Project Name : </b>{{project.title}}</p>
+    <p class="alert alert-dismissible alert-secondary"><b>Domain</b> : {{project.domain}}</p>
+    <p class="alert alert-dismissible alert-danger"><b>Cost</b> : {{project.offered_price}} ₹</p>
+    <p class="alert alert-dismissible alert-warning">Description :
+    {{project.description}}</p><hr>
+    {%if project.proj_selected_flag%}
+<h1>Developer has been aleady selected.</h1>
+</div>
+<style>
+    .table{
+        padding-left: 32px;
+        margin-left: 32px;
+    }
+</style>
+{%else%}
+    {%for bidder in bidders%}
+    <div class="row breadcrumb">
+        <div class="col-lg-8">
+            <b>Name : </b><a href="/view_dev_profile/{{bidder.dev_id.dev_id}}/">{{bidder.dev_name}}</a></p>
+            <p><b>Bid price : </b>{{bidder.bid_price}} ₹</p>
+        </div>
+        <div class="col-lg-4">
+            <br><a href="/selected_freelancer_client/{{bidder.id}}/" class='btn btn-primary btn-sm' >Select Bidder</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="container">
+    <a href="/delete_project/{{project.project_id}}/" class='btn btn-danger btn-sm'>Delete this Project</a>
+</div>
+{%endif%}
+{% endblock%}

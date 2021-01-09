@@ -1,0 +1,51 @@
+{% extends 'base_client.html'%}
+{% block body%}
+<style>
+    .format{
+    text-align: center;
+    }
+
+    .border{
+        margin-left: 30px;
+    }
+
+</style>
+
+<div class="container">
+    <div class="format">
+        <br><br><h2>Confirmation Reciept</h2>
+        <p>You have chosen your desired Freelancer! Congratulations!</p>
+        <div class="container">
+            <br><p><b>Project Name:</b> {{project.title}}</p>
+            <p><b>Domain</b> : {{project.domain}}</p>
+            <b>Cost</b> : {{project.offered_price}}</p>
+            <p><b>Description : </b>
+            {{project.description}}</p>
+        </div>
+        <hr>
+    </div>
+    
+    <div class="row border">
+        <p><b>Freelancer Details:</b></p>
+        <div class="col-sm-4">
+            <br><p><b>Freelancer Name:</b> {{dev.user.username}}</p>
+            <p><b>Phone no:</b> {{dev.phone_no}}</p>
+            <p><b>Level of Experience:</b> {{dev.exp}}</p>
+            <p><b>Domain:</b>{{dev.domain}}</p>
+            <p><b>Price quoted:</b> {{bidder.bid_price}}</p><br>
+            <br>
+        </div>
+        <p><b>Client Details:</b></p>
+        <div class="col-sm-4">
+            <br><p><b>Name: </b>{{client.user.username}}</p>
+            <p><b>Age: </b>{{client.age}}</p>
+            <p><b>Email: </b>{{client.user.email}}</p>
+            <p><b>Phone No: </b>{{client.phone_no}}</p><br>
+        </div>  
+    </div>
+    <div class="container format ">
+        <a href="/bill_final/{{bidder.id}}/" class="btn btn-danger">Proceed</a>
+    </div>
+</div>
+
+{% endblock%}

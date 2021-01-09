@@ -1,0 +1,40 @@
+{% extends 'base_client.html' %}
+{% block body %}
+<div class="container"style='margin-top: 5px'>
+<div class="row" >
+    <div class="col-sm-4 card text-white bg-primary" style="margin: auto;">
+        <br>
+        <h3>The Developer</h3><br>
+        <p>{{dev.user.username}}</p>
+        <p>{{dev.user.email}}</p>
+        <p>{{dev.phone_no}}</p>
+    </div>
+    <div class="col-sm-4 card text-white bg-dark" style="margin: auto;">
+        <br>
+        <h3>The Client</h3> <br>
+        <p>{{client.user.username}}</p>
+        <p>{{client.user.email}}</p>
+        <p>{{client.phone_no}}</p>
+    </div>
+  </div>
+</div>
+<hr>
+<hr>
+<div class="container111 ">
+    <p><h3>{{project.title}}</h3></p>
+   <p><h2>The Price to be paid is </h2><h1>{{bid_price}}</h1></p>
+</div>
+<hr>
+<hr>
+<style>
+    h3,p{
+     text-align: center;
+    }
+    p{
+        font-size: medium;
+    }
+    .container111{
+        text-align: center;
+    }
+</style>
+{% endblock%}

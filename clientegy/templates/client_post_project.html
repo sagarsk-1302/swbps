@@ -1,0 +1,53 @@
+{% extends 'base_client.html' %}
+{% block body %}
+<div class="container">
+    <form action="/client_post_project/" method="post" ><br>
+        {% csrf_token %}
+        <p class="breadcrumb">Project Name</p>
+        <input type="text" name="project_name" class="form-control " placeholder="Enter Project Name" required><hr>
+        <p class="breadcrumb">Domain</p>
+        <div class="btn-group btn-group-toggle breadcrumb" data-toggle="buttons">
+            <label class="btn btn-dark">
+              <input type="radio" name="domain" id="option1" autocomplete="off" value= "Mobile Application"> Mobile Application
+            </label>
+            <label class="btn btn-dark">
+              <input type="radio" name="domain" id="option2" autocomplete="off"value= "Web Application"> Web Application
+            </label>
+            <label class="btn btn-dark active">
+              <input type="radio" name="domain" id="option3" autocomplete="off" value= "Desktop Application"> Desktop Application
+            </label>
+          </div>
+        <hr>
+        <p class="breadcrumb">Experience Level</p>
+        <div class="btn-group btn-group-toggle breadcrumb" data-toggle="buttons">
+            <label class="btn btn-dark">
+              <input type="radio" name="experience"  autocomplete="off" value= "Beginner"> Beginner
+            </label>
+            <label class="btn btn-dark">
+              <input type="radio" name="experience"  autocomplete="off"value= "Intermediate"> Intermediate
+            </label>
+            <label class="btn btn-dark">
+              <input type="radio" name="experience"  autocomplete="off" value= "Expert"> Expert
+            </label>
+          </div>
+        <hr>
+        <p class="breadcrumb">Description</p>
+        <textarea name="description" class="form-control" placeholder="Fill in the Description about your project"></textarea> <hr>
+        <p class="breadcrumb">Quoted Price</p>
+        <input type="number" name="offered_price" class="form-control" placeholder="Offering Price" required><hr>
+        <button type="submit" class="btn btn-dark btn-lg btn-block" >Post the project</button>
+    </form>
+    <br>
+    <br>
+</div>
+<style>
+    form{
+        width : 75%;
+        margin-left: 10%;
+    }
+    button{
+        width:25%;
+
+    }
+</style>
+{% endblock%}

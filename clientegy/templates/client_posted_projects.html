@@ -1,0 +1,22 @@
+{% extends 'base_client.html'%}
+{% block body%}
+<div class='container'>
+  {%if not has_projects %}
+  <br><h3>No projects Posted</h3>
+</div>
+  {%else%}
+  {% for post in posts %}
+    <div class='alert alert-dismissible alert-secondary' style="margin-top: 5px;">
+      <br><p><b>Project Name</b> : <a href="/viewproject_client/{{post.project_id}}/">{{post.title}}</a></p>
+      <p><b>Domain</b> : {{post.domain}}</p>
+      <p><b>Cost</b> : {{post.offered_price}} ₹</p>
+      {%if post.proj_selected_flag %}
+      <strong>The developer has been selected.</strong>
+      <p>Check under finalised projects for more details</p>
+        {%endif%}
+    </div>
+
+{% endfor%}
+
+{%endif%}
+{% endblock%}

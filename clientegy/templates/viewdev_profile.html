@@ -1,0 +1,18 @@
+{%extends 'base_freelancer.html'%}
+{%block body%}
+<div class="container">
+    <div class="container" style="border-radius: 20px 50px; border:1px solid #2196f3; margin-top:30px;">
+    <br>
+    <br>
+    <p><b>Name: </b>{{user.user.username}}</p>
+    <p><b>Age: </b>{{user.age}}</p>
+    <p><b>Email: </b>{{user.user.email}}</p>
+    <p><b>Phone No: </b>{{user.phone_no}}</p>
+    <p><b>Experience: </b>{{user.exp}}</p>
+    <p><b>Charging Service offered: </b>{{user.charging_basis}}</p>
+    <p><b>Preferred Domain: </b>{{user.domain}}</p>
+    <br><br>
+    </div>
+</div>
+
+{%endblock%}

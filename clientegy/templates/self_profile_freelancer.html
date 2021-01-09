@@ -1,0 +1,20 @@
+{%extends 'base_freelancer.html'%}
+{%block body%}
+<div class="container card border-primary" style=" margin-top:5px; border-radius: 50px 20px;">
+    <br>
+    <br>
+    <div style="margin-left: 20px;">
+    <p><b>Name: </b>{{user.user.username}}</p>
+    <p><b>Age: </b>{{user.age}}</p>
+    <p><b>Email: </b>{{user.user.email}}</p>
+    <p><b>Phone No: </b>{{user.phone_no}}</p>
+    <p><b>Experience: </b>{{user.exp}}</p>
+    <p><b>Charging Service offered: </b>{{user.charging_basis}}</p>
+    <p><b>Preferred Domain: </b>{{user.domain}}</p>
+    <br><br>
+    <a href="{%url 'edit_profile_dev'%}" class="btn btn-success">Edit Profile</a>
+    </div>
+    <br>
+    <br>
+</div>
+{%endblock%}

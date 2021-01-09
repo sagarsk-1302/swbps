@@ -1,0 +1,15 @@
+{% extends 'base_freelancer.html'%}
+{% block body%}
+<div class="container">
+    {%if not if_applied%}
+    <br><h4>You have not applied for any projects.</h4>
+    {%else%}
+    {% for i in appliedProjects %}
+    <div class='container card border-primary' style="margin-top: 10px;">
+    <br><p><b>Name : </b><a href="/view_project_dev/{{i.2.project_id}}/">{{i.0}}</a></p>
+    <p><b>Bid Price : </b>{{i.1}} ₹</p>
+    </div>
+    {% endfor %}
+    {%endif%}
+</div>
+{%endblock%}

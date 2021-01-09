@@ -1,0 +1,22 @@
+{% extends 'base_client.html' %}
+{% block body%}
+
+<div class="container">
+    {%if username_exists %}
+    <div class="alert alert-dismissible alert-danger"><br><h5>The user with the same username already exists.</h5>
+    <h6>Please enter a different user name.</h6></div>
+    {%endif%}
+    <form action="/edit_profile_client/" method="post"><br>
+        {% csrf_token %}
+        <p class="breadcrumb">Name of the Company : </p>
+        <input type="text" name="name" class="form-control" value={{user.user.username}}><hr>
+        <p class="breadcrumb">Age</p>
+        <input type="text" name="age" class="form-control" value={{user.age}}><hr>
+        <p class="breadcrumb">Phone No</p>
+        <input type="tel" name="phoneNo" class="form-control" pattern="[0-9]{10}" value={{user.phone_no}}><hr>
+        <br>
+        <button type="submit" class="btn btn-success btn-sm">Update</button>
+    </form>
+</div>
+
+{% endblock %}
